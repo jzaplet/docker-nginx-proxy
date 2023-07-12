@@ -8,6 +8,9 @@ $nette = (new Nette\Http\RequestFactory)->fromGlobals();
 $symfony = \Symfony\Component\HttpFoundation\Request::createFromGlobals();
 
 dump($symfony->getClientIp());
+dump($symfony->getClientIps());
+
+dump($nette->getRemoteAddress());
 dump($nette->getRemoteHost());
 
 dump($_SERVER['REMOTE_ADDR']);
