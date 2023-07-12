@@ -1,0 +1,17 @@
+{
+    "name": "jz/docker-nginx-proxy",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jiří Zapletal",
+            "email": "jz@strategio.dev"
+        }
+    ],
+    "require": {
+        "tracy/tracy": "^2.10"
+    }
+}
