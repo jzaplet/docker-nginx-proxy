@@ -6,6 +6,9 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $nette = (new Nette\Http\RequestFactory)->fromGlobals();
 $symfony = \Symfony\Component\HttpFoundation\Request::createFromGlobals();
+$symfony::setTrustedProxies(['REMOTE_ADDR'], -1);
+
+dump($symfony->isFromTrustedProxy());
 
 dump($symfony->getClientIp());
 dump($symfony->getClientIps());
