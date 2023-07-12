@@ -5,12 +5,12 @@ require_once __DIR__ . '/../vendor/autoload.php';
 \Tracy\Debugger::enable(\Tracy\Debugger::Development);
 
 $nette = (new Nette\Http\RequestFactory);
-$nette->setProxy('0.0.0.0');
+$nette->setProxy(['192.168.0.0/16', '10.0.0.0/8']);
 $netteRequest = $nette->fromGlobals();
 
 
 $symfony = \Symfony\Component\HttpFoundation\Request::createFromGlobals();
-$symfony::setTrustedProxies(['REMOTE_ADDR'], -1);
+$symfony::setTrustedProxies(['192.168.0.0/16', '10.0.0.0/8'], -1);
 
 dump($symfony->isFromTrustedProxy());
 
@@ -22,5 +22,4 @@ dump($netteRequest->getRemoteHost());
 
 dump($_SERVER['REMOTE_ADDR']);
 dump($_SERVER['HTTP_X_REAL_IP']);
-
 dump($_SERVER);
