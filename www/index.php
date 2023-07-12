@@ -11,23 +11,23 @@ dump($_SERVER['REMOTE_ADDR']);
 dump($_SERVER['HTTP_X_REAL_IP']);
 dump($_SERVER);
 
-dump('Symfony --------------------------------------->');
+dump('Symfony -------------------------------------->');
+$symfonyRequest = Symfony\Component\HttpFoundation\Request::createFromGlobals();
+$symfonyRequest::setTrustedProxies($trustedProxies, -1);
 
-$symfony = Symfony\Component\HttpFoundation\Request::createFromGlobals();
-$symfony::setTrustedProxies($trustedProxies, -1);
+dump($symfonyRequest);
+dump($symfonyRequest->isFromTrustedProxy());
+dump($symfonyRequest->getHost());
+dump($symfonyRequest->getHttpHost());
+dump($symfonyRequest->getClientIp());
 
-dump($symfony);
-dump($symfony->isFromTrustedProxy());
-dump($symfony->getHost());
-dump($symfony->getHttpHost());
-dump($symfony->getClientIp());
 
-dump('Nette --------------------------------------->');
-
+dump('Nette ---------------------------------------->');
 $nette = (new Nette\Http\RequestFactory);
 $nette->setProxy($trustedProxies);
 $netteRequest = $nette->fromGlobals();
 
 dump($netteRequest);
+dump($netteRequest->isSecured());
 dump($netteRequest->getRemoteAddress());
 dump($netteRequest->getRemoteHost());
