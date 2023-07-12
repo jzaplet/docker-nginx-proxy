@@ -15,12 +15,14 @@ RUN apk add openssl curl ca-certificates
 RUN apk add bash nano
 RUN apk add nginx
 
+# Copy source code & set permissions
+COPY . ./
+
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer install --no-cache --prefer-dist --no-scripts
 
-# Copy source code & set permissions
-COPY . ./
+# Set permissions
 RUN chown -R www-data:www-data /var/www/html
 
 # Add entrypoint
