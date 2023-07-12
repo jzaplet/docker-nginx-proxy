@@ -15,3 +15,5 @@ dump($nette->getRemoteHost());
 
 dump($_SERVER['REMOTE_ADDR']);
 dump($_SERVER['HTTP_X_REAL_IP']);
+
+dump($_SERVER);
