@@ -12,6 +12,8 @@
         }
     ],
     "require": {
-        "tracy/tracy": "^2.10"
+        "tracy/tracy": "^2.10",
+        "symfony/http-foundation": "^6.3",
+        "nette/http": "^3.2"
     }
 }
