@@ -19,7 +19,7 @@ RUN apk add nginx
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Copy source code & set permissions
-COPY docker ./
+COPY . ./
 RUN chown -R www-data:www-data /var/www/html
 
 # Add entrypoint
